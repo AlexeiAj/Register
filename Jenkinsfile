@@ -4,9 +4,11 @@ pipeline {
     stages {
         stage ('Build Image') {
             steps {
-                script {
-                    dockerapp = docker.build("alexeiaj/register", '-f ./Dockerfile .')
-                }
+                sh 'ls -la'
+
+                //script {
+                    //dockerapp = docker.build("alexeiaj/register", '-f ./Dockerfile .')
+                //}
             }
         }
     }
