@@ -4,7 +4,9 @@ pipeline {
     stages {
         stage ('Build Image') {
             steps {
-                echo('teste')
+                script {
+                    dockerapp = docker.build("alexeiaj/register", '-f ./Dockerfile .')
+                }
             }
         }
     }
