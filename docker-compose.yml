@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  register-container:
+    image: register-docker-compose:1
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    volumes:
+      - /data/register-container
+    ports:
+      - "8080:8080"
