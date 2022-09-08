@@ -2,15 +2,15 @@ pipeline {
     agent any
 
     tools {
-        gradle '7.5.1'
+//         gradle '7.5.1'
         jdk 'jdk-17'
     }
 
     stages {
         stage ('Gradle Build') {
             steps {
-                sh 'gradle --version'
-//                 sh 'java --version'
+//                 sh 'gradle --version'
+                sh 'java --version'
             }
         }
     
