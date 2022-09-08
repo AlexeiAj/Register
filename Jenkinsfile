@@ -21,15 +21,23 @@ pipeline {
             }
         }
 
-        stage ('Deploy Kubernetes') {
+//         stage ('Deploy Kubernetes') {
 //             environment {
 //                 tag_version = "${env.BUILD_ID}"
 //             }
-            steps {
-                withKubeConfig([credentialsId: 'kubeconfig']) {
+//             steps {
+//                 withKubeConfig([credentialsId: 'kubeconfig']) {
 //                     sh 'sed -i "s/{{tag}}/$tag_version/g" ./k8s/deployment.yaml'
                     sh 'kubectl apply -f ./k8s/app.yml'
-                }
+//                 }
+//             }
+//         }
+
+        stage('List pods') {
+            withKubeConfig([credentialsId: 'kubernetes-config']) {
+                sh 'curl -LO "https://storage.googleapis.com/kubernetes-release/release/v1.24.0/bin/linux/amd64/kubectl"'
+                sh 'chmod u+x ./kubectl'
+                sh './kubectl get pods'
             }
         }
     }
