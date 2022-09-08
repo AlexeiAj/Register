@@ -20,7 +20,7 @@ pipeline {
                     dockerapp = docker.build("alexeiaj/register", '-f ./Dockerfile .')
                 }
             }
-//         }
+        }
 
 //         stage ('Push Image') {
 //             steps {
