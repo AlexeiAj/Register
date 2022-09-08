@@ -1,10 +1,14 @@
 pipeline {
     agent any
 
+    tools {
+        gradle '7.5.1'
+    }
+
     stages {
         stage ('Gradle Build') {
             steps {
-                sh './gradlew clean'
+                sh 'gradlew --version'
             }
         }
     
