@@ -1,4 +1,8 @@
+FROM gradle:jdk17-alpine AS build
+WORKDIR /opt/app
+COPY ./ /opt/app
+RUN gradle clean build
+
 FROM openjdk:17-jdk-alpine
-ARG JAR_FILE=build/libs/*.jar
-COPY ${JAR_FILE} app.jar
-ENTRYPOINT ["java", "-jar", "app.jar"]
+COPY --from=build /opt/app/build/libs/*.jar app.jar
+ENTRYPOINT ["java","-jar","app.jar"]

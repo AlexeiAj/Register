@@ -1,25 +1,25 @@
 pipeline {
     agent any
 
-    tools {
+//     tools {
 //         gradle '7.5.1'
-        jdk 'jdk-17'
-    }
+//         jdk 'jdk-17'
+//     }
 
     stages {
         stage ('Gradle Build') {
             steps {
 //                 sh 'gradle --version'
-                sh 'java -version'
+//                 sh 'java -version'
             }
         }
     
-//         stage ('Build Image') {
-//             steps {
-//                 script {
-//                     dockerapp = docker.build("alexeiaj/register", '-f ./Dockerfile .')
-//                 }
-//             }
+        stage ('Build Image') {
+            steps {
+                script {
+                    dockerapp = docker.build("alexeiaj/register", '-f ./Dockerfile .')
+                }
+            }
 //         }
 
 //         stage ('Push Image') {
