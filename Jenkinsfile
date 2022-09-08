@@ -9,7 +9,8 @@ pipeline {
     stages {
         stage ('Gradle Build') {
             steps {
-                sh 'gradle clean build'
+                sh 'gradle --version'
+                sh 'java --version'
             }
         }
     
