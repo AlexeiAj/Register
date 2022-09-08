@@ -5,21 +5,21 @@ pipeline {
         stage ('Build Image') {
             steps {
                 script {
-                    dockerapp = docker.build("alexeiaj/register", '-f ./Dockerfile .')
+                    dockerapp = docker.build("alexeiaj/register:${env.BUILD_ID}", '-f ./Dockerfile .')
                 }
             }
         }
 
-//         stage ('Push Image') {
-//             steps {
-//                 script {
-//                     docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
-//                         dockerapp.push('latest')
-//                         dockerapp.push("${env.BUILD_ID}")
-//                     }
-//                 }
-//             }
-//         }
+        stage ('Push Image') {
+            steps {
+                script {
+                    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+                        dockerapp.push('latest')
+                        dockerapp.push("${env.BUILD_ID}")
+                    }
+                }
+            }
+        }
 
 //         stage ('Deploy Kubernetes') {
 //             environment {
