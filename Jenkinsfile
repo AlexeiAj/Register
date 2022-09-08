@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage ('Gradle Build') {
             steps {
-                sh 'gradlew --version'
+                sh 'gradle --version'
             }
         }
     
