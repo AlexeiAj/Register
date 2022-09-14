@@ -24,8 +24,6 @@ pipeline {
         stage('List pods') {
             steps {
                 withKubeConfig([credentialsId: 'kubeconfig']) {
-                    sh 'curl -LO "https://storage.googleapis.com/kubernetes-release/release/v1.24.0/bin/linux/amd64/kubectl"'
-                    sh 'chmod u+x ./kubectl'
                     sh './kubectl get pods'
                 }
             }
