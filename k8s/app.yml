@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: api
-          image: alexeiaj/register:latest
+          image: alexeiaj/register:{{tag}}
           ports:
             - containerPort: 8080
 ---
