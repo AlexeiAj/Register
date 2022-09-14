@@ -24,7 +24,7 @@ pipeline {
         stage('List pods') {
             steps {
                 withKubeConfig([credentialsId: 'kubeconfig']) {
-                    sh './kubectl get pods'
+                    sh 'kubectl get pods'
                 }
             }
         }
@@ -36,7 +36,7 @@ pipeline {
 //             steps {
 //                 withKubeConfig([credentialsId: 'kubeconfig']) {
 //                     sh 'sed -i "s/{{tag}}/$tag_version/g" ./k8s/app.yaml'
-//                     sh './kubectl apply -f ./k8s/app.yml'
+//                     sh 'kubectl apply -f ./k8s/app.yml'
 //                 }
 //             }
 //         }
