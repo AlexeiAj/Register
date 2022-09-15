@@ -38,8 +38,8 @@ spec:
   rules:
   - http:
       paths:
-      - pathType: Prefix
-        path: "/register"
+      - path: /register
+        pathType: Prefix
         backend:
           service:
             name: api-service
